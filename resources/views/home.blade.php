@@ -39,7 +39,7 @@
                                     </div>
 
                                     <div class="form-check">
-                                        <input type="radio" class="form-check-input" name="is_public" value="public">
+                                        <input type="radio" class="form-check-input" name="is_public" value="public" checked="checked">
                                         Public
                                         <label class="form-check-label" for="radio2"></label>
                                     </div>
