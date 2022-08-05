@@ -17,15 +17,15 @@
                         <form id="TWEET_">
                             @csrf
                             <div class="row">
-                                <div class="col-md-4">
-
-                                    <div class="col-12">
-                                        <span class="p-4">
+                                <div class="col-md-4" style="text-align: center;">
+                                    <div class="col-auto m-3">
+                                        <span class="m-3">
                                             Welcome <b>{{$user->first_name }} {{$user->last_name}}</b>
                                         </span>
                                     </div>
-
-                                    <img src="{{ url('storage/files/'.$user->thumbnail) }}" height="200" class="rounded-circle" alt="...">
+                                    <div class="mt-1" style="text-align: center;">
+                                        <img src="{{ url('storage/files/'.$user->thumbnail) }}" height="200" class="rounded " alt="...">
+                                    </div>
                                 </div>
 
                                 <div class="col-md mb-3">
@@ -56,19 +56,24 @@
                         </form>
                     </div>
                 </div>
-                <hr />
+            </div>
+            <br>
+            <div class="card">
                 <div class="mt-2 card-body">
                     @foreach ($tweets as $tweet)
-                    <div class="row m-3" id="tweeetlist-{{$tweet->id}}">
-                        <div class="col-auto">
-                            <img src="{{ url('storage/tweet_img/'.$tweet->image) }}" height="100">
-                        </div>
-                        <div class="tweet-div col">
-                            <span id="retrieve_tweet">{{$tweet->tweet}}</span><br />
-                            <span id="date">{{$tweet->created_at}}</span>
+                    <div class="border rounded my-2">
+                        <div class="row m-3" id="tweeetlist-{{$tweet->id}}">
+                            <div class="col-auto">
+                                <img src="{{ url('storage/tweet_img/'.$tweet->image) }}" max-height="300" width="200">
+                            </div>
+                            <div class="tweet-div col">
+                                <span id="retrieve_tweet">{{$tweet->tweet}}</span><br />
+                                <span id="date">Posted on: {{$tweet->created_at}}</span>
+                            </div>
                         </div>
                     </div>
                     @endforeach
+
                 </div>
             </div>
         </div>
@@ -85,7 +90,7 @@
         //SUBMIT
 
         $('#TWEET_').on('submit', function(e) {
-           
+
             // tresSec()
             let is_public = $(`input[name=is_public]`).val();
             let image = $(`input[name=image]`).val();
